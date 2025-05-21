@@ -1,0 +1,14 @@
+# Robot Framework output files
+output.xml
+log.html
+report.html
+
+# Selenium screenshots
+selenium-screenshot-*.png
+
+# IDE and OS specific files (optional, but good practice)
+.vscode/
+.idea/
+*.pyc
+__pycache__/
+.DS_Store 

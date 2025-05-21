@@ -1,0 +1,48 @@
+name: Robot Framework Tests
+
+on:
+  schedule:
+    - cron:  '0 9 * * *' # Runs at 9 AM UTC (6 AM BRT)
+  push:
+    branches:
+      - main # Or your default branch
+  pull_request:
+    branches:
+      - main # Or your default branch
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x' # Specify your Python version
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Set up ChromeDriver
+        uses: nanasess/setup-chromedriver@v2
+        # This action downloads chromedriver and adds it to PATH
+
+      - name: Run Robot Framework tests
+        run: python -m robot tests/demoblaze.robot
+
+      - name: Upload Robot Framework Reports
+        if: always() # Always run this step to upload reports even if tests fail
+        uses: actions/upload-artifact@v4
+        with:
+          name: robot-framework-reports
+          path: |
+            output.xml
+            log.html
+            report.html
+            selenium-screenshot-*.png # Upload any screenshots captured
+          retention-days: 7 # Optional: how long to keep artifacts 
