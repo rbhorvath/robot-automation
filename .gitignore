@@ -2,13 +2,49 @@
 output.xml
 log.html
 report.html
+reports/
 
 # Selenium screenshots
 selenium-screenshot-*.png
 
-# IDE and OS specific files (optional, but good practice)
-.vscode/
-.idea/
+# Python bytecode and cache
 *.pyc
 __pycache__/
-.DS_Store 
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# IDE and OS specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Test backup files
+*.backup
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg 

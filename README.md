@@ -1,47 +1,54 @@
-# Robot Automation Tests for Demoblaze
+# Demoblaze Robot Framework Tests
 
-This project contains end-to-end tests for the Demoblaze website (https://www.demoblaze.com/) using Robot Framework and SeleniumLibrary.
+Automated end-to-end tests for the Demoblaze e-commerce site using Robot Framework and SeleniumLibrary.
 
-## Prerequisites
+## Quick Start
 
-*   Python 3.x
-*   pip (Python package installer)
-*   Google Chrome browser (or another browser supported by Selenium, with corresponding WebDriver)
-*   WebDriver for your chosen browser (e.g., ChromeDriver for Chrome) added to your system's PATH.
+1. **Install Python 3.10+ and Chrome**
+2. **Clone the repo:**
+   ```bash
+   git clone https://github.com/rbhorvath/robot-automation.git
+   cd robot-automation
+   ```
+3. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. **Run all tests:**
+   ```bash
+   python -m robot tests
+   ```
 
-## Setup
+## Usage
 
-1.  **Clone the repository (if applicable) or download the files.**
-2.  **Navigate to the project directory:**
-    ```bash
-    cd path/to/your/project
-    ```
-3.  **Install the required Python libraries:**
-    ```bash
-    pip install -r requirements.txt
-    ```
+- Run specific tags:
+  ```bash
+  python -m robot --include smoke tests
+  python -m robot --include negative tests
+  ```
+- Run with custom variables:
+  ```bash
+  python -m robot --variable USERNAME:youruser --variable PASSWORD:yourpass tests
+  ```
+- Headless mode is default; visual mode available via variable.
 
-## Running the Tests
+## Project Structure
 
-To execute the tests, run the following command in your terminal from the project's root directory:
-
-```bash
-robot tests/demoblaze.robot
+```
+robot-automation/
+├── resources/         # Keywords, locators, variables
+├── tests/             # Test suites by feature
+├── requirements.txt   # Python dependencies
+└── README.md          # This file
 ```
 
-This will open a Chrome browser instance, run the defined test cases, and generate a report (log.html and report.html) in the current directory upon completion.
+## Output
 
-## Test Cases
-
-The following test scenarios are covered:
-
-*   **Navigate Categories:** Verifies that users can navigate through the Phone, Laptop, and Monitor product categories.
-*   **User Signup:** Tests the user registration functionality.
-*   **User Login and Logout:** Verifies that a registered user can log in and subsequently log out.
-*   **Add Product to Cart:** Checks if a logged-in user can add a product (Samsung galaxy s6) to the shopping cart and view it in the cart.
+- `report.html` and `log.html` for results
+- Screenshots on failure (if enabled)
 
 ## Notes
 
-*   The tests use a predefined username (`testuser123`) and password (`testpassword`). Since the Demoblaze site might not persist users across sessions or might have unique username constraints, the signup test might fail on subsequent runs if the user already exists. You might need to change the `${USERNAME}` variable in `tests/demoblaze.robot` for repeated executions of the signup test.
-*   Ensure your WebDriver is correctly configured and accessible in your system's PATH.
-*   The tests are configured to run in Chrome by default. To use a different browser, you'll need to modify the `Open Browser` keyword in the `Suite Setup` section of `tests/demoblaze.robot` and ensure you have the corresponding WebDriver. 
+- Default user: Ceao / 1234 (see `resources/variables.robot`)
+- CI/CD via GitHub Actions
+- Tests are idempotent and retry logic is included

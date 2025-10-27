@@ -1,2 +1,9 @@
-robotframework
-robotframework-seleniumlibrary 
+# Robot Framework and Selenium
+robotframework==7.3.2
+robotframework-seleniumlibrary==6.8.0
+
+# WebDriver Manager for automatic driver management
+webdriver-manager==4.0.2
+
+# Selenium with specific version
+selenium==4.38.0

@@ -1,0 +1,34 @@
+# Robot Framework configuration file
+# This file can be used to set default arguments for robot command
+
+[robot]
+# Output directory for all reports
+outputdir = reports
+
+# Set log level
+loglevel = INFO
+
+# Console output settings
+consolecolors = on
+consolemarkers = on
+
+# Report settings
+reporttitle = Demoblaze E2E Test Report
+logtitle = Demoblaze E2E Test Log
+
+# Screenshot settings on failure
+capturescreenshots = True
+
+# Timestamp format
+timestampoutputs = True
+
+# Maximum number of failed tests before stopping
+exitonfailure = False
+
+# Variable files
+# variablefile = resources/variables.robot
+
+# Additional metadata
+metadata = Browser:Chrome (Headless)
+metadata = Environment:Test
+metadata = Application:Demoblaze E-commerce
